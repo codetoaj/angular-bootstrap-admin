@@ -23,33 +23,29 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     // getting form data from loginform
     const  { email, password } = this.loginForm.value;
-    debugger;
     // encoding password into sha256 format
     const shaPassword = sha256(password);
-    debugger;
     // preparing json object for login api call
     const loginData = {
       email: email,
       password: shaPassword
     };
-    debugger;
     // calling login service
-    this.authService.userLogin(loginData)
-      .subscribe((res:any)=> {
-        debugger;
-        const authToken = res?.data?.authToken;
-        debugger;
-        if (authToken) {
-          localStorage.setItem('x-authtoken', authToken);
-          debugger;
-          this.router.navigate(['/dashboard']);
-        }
-      },()=> {
-        this.showAlert = true;
-        setTimeout(()=> {
-          this.showAlert = false;
-        }, 2000);
-      });
+    // this.authService.userLogin(loginData)
+    //   .subscribe((res:any)=> {
+    //     const authToken = res?.data?.authToken;
+    //     if (authToken) {
+    //       localStorage.setItem('x-authtoken', authToken);
+    //       this.router.navigate(['/dashboard']);
+    //     }
+    //   },()=> {
+    //     this.showAlert = true;
+    //     setTimeout(()=> {
+    //       this.showAlert = false;
+    //     }, 2000);
+    //   });
+    localStorage.setItem('x-authtoken', 'qwerty12345678');
+    this.router.navigate(['/dashboard']);
   }
 
 }

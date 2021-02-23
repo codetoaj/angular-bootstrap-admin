@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: 'products', loadChildren: () => import('./product/product.module').then(m=>m.ProductModule)}
 ];
 
 @NgModule({
